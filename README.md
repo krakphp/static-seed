@@ -8,7 +8,7 @@ Install with composer at `krak/static-seed`
 
 ## Usage
 
-```
+```php
 <?php
 
 use Krak\StaticSeed;
