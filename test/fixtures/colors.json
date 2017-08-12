@@ -1,0 +1,9 @@
+{
+    "name": "colors",
+    "row_type": "tuple",
+    "type": "normal",
+    "fields": ["id", "name", "slug", "hex", "sort", "type"],
+    "rows": [
+        [1, "Red", "red", "#000", 0, "normal"]
+    ]
+}

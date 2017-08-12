@@ -1,0 +1,19 @@
+{
+    "name": "color_sets_colors",
+    "row_type": "tuple",
+    "type": "join",
+    "fields": ["id", "color_id", "color_set_id"],
+    "map_id": {
+        "color_set_id": {
+            "table": "color_sets",
+            "field": "slug",
+        },
+        "color_id": {
+            "table": "colors",
+            "field": "slug",
+        }
+    },
+    "rows": [
+        [1, 1, 1],
+    ]
+}

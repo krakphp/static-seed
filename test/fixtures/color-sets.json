@@ -1,0 +1,9 @@
+{
+    "name": "color_sets",
+    "row_type": "struct",
+    "type": "normal",
+    "fields": ["id", "name", "slug"],
+    "rows": [
+        {"id": 1, "name": "Color Set 1", "slug": "color-set-1"}
+    ]
+}

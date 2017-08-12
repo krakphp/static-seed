@@ -1,0 +1,26 @@
+{
+    "name": "krak/static-seed",
+    "type": "library",
+    "license": "MIT",
+    "description": "Powerful Seeding for static data.",
+    "authors": [
+        {
+            "name": "RJ Garcia",
+            "email": "rj@bighead.net"
+        }
+    ],
+    "keywords": ["fixtures", "seed", "database"],
+    "autoload": {
+        "psr-4": {
+            "Krak\\StaticSeed\\": "src"
+        }
+    },
+    "require": {
+        "doctrine/dbal": "^2.5",
+        "nikic/iter": "^1.5",
+        "psr/log": "^1.0"
+    },
+    "require-dev": {
+        "peridot-php/peridot": "^1.19"
+    }
+}
