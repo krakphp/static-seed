@@ -103,7 +103,9 @@ class Import
                     continue;
                 }
                 if (!isset($id_map[$orig_value])) {
-                    throw new \RuntimeException(sprintf('Could not map %s.%s of value %s with %s.%s', $table->name, $key, $orig_value, $table->map_id[$key]['table'], $table->map_id[$key]['field']));
+                    $key_field = $table->map_id[$key]['field'];
+                    $key_field = is_array($key_field) ? implode('.', $key_field) : $key_field;
+                    throw new \RuntimeException(sprintf('Could not map %s.%s of value %s with %s.%s', $table->name, $key, $orig_value, $table->map_id[$key]['table'], $key_field));
                 }
 
                 $row[$field_idx_map[$key]] = $id_map[$orig_value];
