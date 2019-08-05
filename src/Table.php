@@ -2,7 +2,7 @@
 
 namespace Krak\StaticSeed;
 
-use function iter\reduce;
+use function Krak\Fun\reduce;
 
 class Table
 {

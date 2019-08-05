@@ -3,7 +3,7 @@
 namespace Krak\StaticSeed;
 
 use Doctrine\DBAL\Connection;
-use function iter\map, iter\filter, iter\toArray, iter\reduce, iter\join, iter\product, iter\flatten;
+use function Krak\Fun\map, Krak\Fun\filter, Krak\Fun\toArray, Krak\Fun\reduce, Krak\Fun\join, Krak\Fun\product, Krak\Fun\flatten;
 
 class Import
 {
