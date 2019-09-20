@@ -69,7 +69,7 @@ class Import
         }, $table->rows));
     }
 
-    private function execInsertSQL($table, $tables_map, $tuple_rows) {
+    private function execInsertSQL(Table $table, $tables_map, $tuple_rows) {
         if ($table->map_id) {
             $tuple_rows = $this->mapTupleRowsWithMapId($tuple_rows, $table, $tables_map);
         }
@@ -88,7 +88,14 @@ class Import
             }, $tuple_rows))
         );
 
-        $this->execSQL("TRUNCATE TABLE {$table->name}");
+        if ($table->shouldTruncateTable()) {
+            $this->execSQL("TRUNCATE TABLE {$table->name}");
+        } else {
+            $sql .= "\nON DUPLICATE KEY UPDATE " . join(', ', map(function($field) {
+                return sprintf("%s = VALUES(%s)", $field, $field);
+            }, $table->getUpdateFields()));
+        }
+
         $this->execSQL($sql);
     }
 

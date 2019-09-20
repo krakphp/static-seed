@@ -127,3 +127,11 @@ color_sets_colors.json:
     }
 }
 ```
+
+### Symfony Installation
+
+Register the following in your config/bundles.php to install the symfony bundle.
+
+```php
+    Krak\StaticSeed\Bridge\Symfony\StaticSeedBundle::class => ['all' => true],
+```
