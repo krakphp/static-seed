@@ -2,7 +2,7 @@
 
 namespace Krak\StaticSeed;
 
-use function Krak\Fun\reduce;
+use function Krak\Fun\{reduce, head};
 
 class Table
 {
@@ -15,6 +15,8 @@ class Table
     public $index_by;
     public $fields;
     public $map_id;
+    public $ignoreFieldsOnUpdate;
+    public $primaryKey;
     public $rows;
 
 
@@ -60,5 +62,21 @@ class Table
             $acc[$value] = $idx;
             return $acc;
         }, $this->fields);
+    }
+
+    public function getPrimaryKey(): string {
+        return $this->primaryKey ?: head($this->fields);
+    }
+
+    public function getUpdateFields(): array {
+        $ignoreFields = $this->ignoreFieldsOnUpdate;
+        $primaryKey = $this->getPrimaryKey();
+        return array_filter($this->fields, function(string $field) use ($ignoreFields, $primaryKey) {
+            return !in_array($field, $this->ignoreFieldsOnUpdate) && $field !== $primaryKey;
+        });
+    }
+
+    public function shouldTruncateTable(): bool {
+        return $this->ignoreFieldsOnUpdate === null;
     }
 }
